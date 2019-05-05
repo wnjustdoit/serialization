@@ -15,7 +15,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.test.skip>false</maven.test.skip>
+        <maven.test.skip>true</maven.test.skip>
         <junit.version>4.12</junit.version>
         <lombok.version>1.16.18</lombok.version>
         <fastjson.version>1.2.40</fastjson.version>
