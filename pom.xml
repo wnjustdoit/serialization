@@ -6,34 +6,31 @@
 
     <groupId>com.caiya</groupId>
     <artifactId>serialization</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>com.caiya.serialization</name>
-    <description>multiple com.caiya.serialization integration</description>
+    <name>serialization</name>
+    <description>序列化集成工具包</description>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.test.skip>true</maven.test.skip>
         <junit.version>4.12</junit.version>
-        <lombok.version>1.16.18</lombok.version>
-        <fastjson.version>1.2.40</fastjson.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <spring-oxm.version>5.0.8.RELEASE</spring-oxm.version>
     </properties>
 
     <dependencies>
-        <!-- for test -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -41,8 +38,32 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jibx</groupId>
+            <artifactId>jibx-run</artifactId>
+            <version>1.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.11.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>local release repository</name>
+            <url>http://maven.mamaqunaer.cc/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>local snapshot repository</name>
+            <url>http://maven.mamaqunaer.cc/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>

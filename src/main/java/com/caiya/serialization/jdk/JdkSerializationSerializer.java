@@ -4,6 +4,7 @@ import com.caiya.serialization.Serializer;
 import com.caiya.serialization.exception.NestedIOException;
 import com.caiya.serialization.exception.SerializationException;
 import com.caiya.serialization.exception.SerializationFailedException;
+import com.caiya.serialization.util.SerializationUtils;
 
 import java.io.*;
 
@@ -15,10 +16,11 @@ import java.io.*;
  */
 public class JdkSerializationSerializer implements Serializer<Object> {
 
+
     private final ClassLoader classLoader;
 
     public JdkSerializationSerializer() {
-        this.classLoader = null;
+        this(null);
     }
 
     public JdkSerializationSerializer(ClassLoader classLoader) {

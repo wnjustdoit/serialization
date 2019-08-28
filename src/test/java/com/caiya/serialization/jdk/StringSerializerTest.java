@@ -4,7 +4,6 @@ import com.caiya.serialization.Serializer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Objects;
 
 /**
  * StringSerializerTest
@@ -14,16 +13,16 @@ import java.util.Objects;
  */
 public class StringSerializerTest {
 
-    static Serializer<String> stringSerializer = new StringSerializer();
+    private Serializer<String> serializer = new StringSerializer();
 
     @Test
-    public void testSerializeAndDeserialize() throws Exception {
+    public void testSerializeAndDeserialize() {
         String input = "我是tom";
-        byte[] outPut = stringSerializer.serialize(input);
+        byte[] outPut = serializer.serialize(input);
         Assert.assertNotNull(outPut);
         Assert.assertTrue(outPut.length > 0);
 
-        String result = stringSerializer.deserialize(outPut);
-        Assert.assertTrue(Objects.equals(result, input));
+        String result = serializer.deserialize(outPut);
+        Assert.assertEquals(result, input);
     }
 }

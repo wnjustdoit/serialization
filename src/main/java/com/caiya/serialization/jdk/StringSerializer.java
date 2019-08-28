@@ -4,6 +4,7 @@ import com.caiya.serialization.Serializer;
 import com.caiya.serialization.exception.SerializationException;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Simple String to byte[] (and back) serializer. Converts Strings into bytes and vice-versa using the specified charset
@@ -22,7 +23,7 @@ public class StringSerializer implements Serializer<String> {
     private final Charset charset;
 
     public StringSerializer() {
-        this(Charset.forName("UTF-8"));
+        this(StandardCharsets.UTF_8);
     }
 
     public StringSerializer(Charset charset) {

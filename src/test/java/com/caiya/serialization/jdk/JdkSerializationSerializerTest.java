@@ -2,12 +2,9 @@ package com.caiya.serialization.jdk;
 
 import com.alibaba.fastjson.JSON;
 import com.caiya.serialization.Serializer;
-import lombok.Data;
+import com.caiya.serialization.User;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * JdkSerializationSerializerTest
@@ -17,33 +14,25 @@ import java.util.Objects;
  */
 public class JdkSerializationSerializerTest {
 
-    static Serializer<Object> jdkSerializationSerializer = new JdkSerializationSerializer();
+    private static Serializer<Object> serializer = new JdkSerializationSerializer();
 
     @Test
-    public void testSerializeAndDeserialize() throws Exception {
+    public void testSerializeAndDeserialize() {
         User user = new User();
         user.setName("我是tom");
-        byte[] outPut = jdkSerializationSerializer.serialize(user);
+        byte[] outPut = serializer.serialize(user);
         Assert.assertNotNull(outPut);
         Assert.assertTrue(outPut.length > 0);
 
-        Object result = jdkSerializationSerializer.deserialize(outPut);
+        Object result = serializer.deserialize(outPut);
         Assert.assertTrue(result instanceof User);
-        Assert.assertTrue(Objects.equals(JSON.toJSONString(result), JSON.toJSONString(user)));
+        Assert.assertEquals(JSON.toJSONString(result), JSON.toJSONString(user));
     }
 
     @Test
-    public void testSerializeAndDeserialize2() throws Exception {
-        jdkSerializationSerializer = new JdkSerializationSerializer(this.getClass().getClassLoader());
+    public void testSerializeAndDeserialize2() {
+        serializer = new JdkSerializationSerializer(this.getClass().getClassLoader());
         testSerializeAndDeserialize();
     }
 
-    @Data
-    static class User implements Serializable {
-
-        private static final long serialVersionUID = 5446326261249843062L;
-
-        private String name;
-
-    }
 }

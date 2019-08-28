@@ -1,27 +1,27 @@
-package com.caiya.serialization.jdk;
+package com.caiya.serialization.util;
 
 import com.caiya.serialization.Serializer;
 
 import java.util.*;
 
 /**
- * Utility class with various com.caiya.serialization-related methods.
+ * Utility class with various serialization-related methods.
  *
  * @author wangnan
  * @since 1.0
  */
 public abstract class SerializationUtils {
 
-    protected static final byte[] EMPTY_ARRAY = new byte[0];
+    public static final byte[] EMPTY_ARRAY = new byte[0];
 
 
-    static boolean isEmpty(byte[] data) {
+    public static boolean isEmpty(byte[] data) {
         return (data == null || data.length == 0);
     }
 
     @SuppressWarnings("unchecked")
-    static <T extends Collection<?>> T deserializeValues(Collection<byte[]> rawValues, Class<T> type,
-                                                         Serializer<?> serializer) {
+    public static <T extends Collection<?>> T deserializeValues(Collection<byte[]> rawValues, Class<T> type,
+                                                                Serializer<?> serializer) {
         // connection in pipeline/multi mode
         if (rawValues == null) {
             return null;
